@@ -1,0 +1,111 @@
+<p></p>
+<h3></h3>
+<h4><b style="font-size: 1.425rem;">Prerequisiti</b><br></h4><span><span>I prerequisiti richiesti allo studente per la comprensione dell'argomento trattato in questa lezione sono:</span><br>
+<ol style="">
+    <li style="">Definizione di classe, oggetti e metodi;</li>
+    <li style="">Concetto di variabile e tipi di dato;</li>
+    <li style="">Conversione fra i tipi;</li>
+    <li style="">Operatori;</li>
+    <li style="">Polimorfismo sui dati;</li>
+    <li style="">Ereditarietà;</li>
+    <li style="">Istruzioni condizionali ed iterative;</li>
+    <li style="">Definizione di Package.</li>
+</ol><span>Inoltre per lo sviluppo degli esercizi proposti è necessario scaricare il compilatore e l'interprete di Java, ovvero il Java JDK. Inoltre si consiglia come ambiente di sviluppo Netbeans.<br></span></span><b><br></b>
+<h4><b style="font-size: 1.425rem;">Collocazione argomento</b><br></h4><span><span><span style="">Si consiglia di collocare il seguente argomento in concomitanza della definizione di Incapsulamento e di Information Hiding , ma&nbsp; prima dell'introduzione del Passaggio di Parametri.<b>&nbsp;<br></b></span></span>
+<ol style="">
+    <li style=""><span>...</span></li>
+    <li style=""><span>Istruzioni</span></li>
+    <li style=""><span><b>Visibilità</b><br></span></li>
+    <li style=""><span style=""><span><span><span>Incapsulamento</span></span>
+        </span>
+        </span>
+    </li>
+    <li style=""><span style="">Passaggio di parametri</span></li>
+    <li style=""><span style=""><b>&nbsp;...</b></span></li>
+</ol>
+</span>
+<h4><b style="font-size: 1.425rem;">Concetti ed esempi</b><br></h4><span>Nella programmazione ad oggetti, la definizione di visibilità assegnata alle proprietà delle classi, ai metodi e alle variabili ricopre un ruolo importante. Infatti è proprio grazie a quest'ultimo che possiamo cambiare il significato di un componente di un’applicazione Java tramite i cosiddetti <b>modificatori di accesso</b>. Essi vengono anteposti prima della dichiarazione di un componente, anche più di uno alla volta, in modo da regolarne l'accesso e la visibilità.<br>&nbsp;&nbsp;<br>I principali modificatori di accesso in Java sono:<br></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span><ol><li><span><span><b style="">public: </b>utilizzabile sia per i membri di una classe che per la classe stessa:</span></span>
+</li>
+<ul>
+    <li>un attributo o metodo di una classe dichiarato<b> pubblico</b> è accessibile da una qualsiasi classe di un qualsiasi package;</li>
+    <li>una classe pubblica è visibile da un qualsiasi package.</li>
+    <ul>
+        <li>In questo esempio possiamo vedere la classe <b>Veicolo </b>che ha un attributo <b>ruote</b> dichiarato pubblico a cui è possibile accedere:</li>
+    </ul>
+    <pre><div class="editor-indent" style="margin-left: 30px;"><code> </code></div></pre>
+    <pre><div class="editor-indent" style="margin-left: 30px;"><code> </code><span style="font-size: 12.635px;">public class Veicolo {<br></span>&nbsp; &nbsp; &nbsp; &nbsp; public int ruote;<br>}<div><br></div>&nbsp; &nbsp; &nbsp; public static void main(String[] args) {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Veicolo moto = new Veicolo();<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; moto.ruote = 2;<br>&nbsp; &nbsp; &nbsp; &nbsp; <br>&nbsp; &nbsp; &nbsp; &nbsp; }</div></pre>
+</ul>
+
+<li><b>protected</b><b>:</b> utilizzabile per i membri di una classe:</li>
+<ul>
+    <li>un metodo o attributo di una classe <b>protetto</b> è accessibile all'interno dello stesso package e in tutte le sottoclassi della classe in cui è definito.</li>
+    <ul>
+        <li>In questo caso proviamo a modificare l'attributo<b> ruote</b> del nostro nuovo oggetto, ma non ci è possibile poiché ruote è dichiarata come protected ed è stata definita in un altro package:</li>
+        <br>
+    </ul>
+    <ul>
+        <pre><div><div class="editor-indent" style="margin-left: 30px;"><code></code><div><div>package pippo;</div><br><div>public class Veicolo {</div><div>&nbsp; &nbsp; protected int ruote;</div><div>}</div><br><div>public class Auto extends Veicolo {</div><div>&nbsp; &nbsp; public void hello() {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; ruote = 4;</div><div>&nbsp; &nbsp; }</div><div>}</div><br><div>package pluto;</div><div>import pippo.*;</div><br><div>public static void main(String[] args) {</div><div>&nbsp; &nbsp; &nbsp; &nbsp; Auto a = new auto();</div><div>&nbsp; &nbsp; &nbsp; &nbsp; a.ruote = 20; // // errore di compilazione, campo non accessibile per package diverso</div><div>&nbsp; &nbsp; &nbsp; &nbsp; }<span style="font-size: 12.635px;">&nbsp; &nbsp; </span></div></div></div></div></pre>
+    </ul>
+</ul>
+<li><b>private:</b> utilizzabile solo con i membri di una classe:</li>
+<ul>
+    <li>un metodo o attributo di una classe <b>privato</b> è accessibile solo all'interno della classe.</li>
+    <ul>
+        <li>Qui invece proviamo a modificare l'attributo <b>ruote</b> ereditato da <span><b style="">Veicolo</b></span>, ma non possiamo poiché é <b>privato</b>:</li>
+        <br>
+    </ul>
+    <ul>
+        <pre><div><div class="editor-indent" style="margin-left: 30px;"><code></code><div><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">public class Veicolo {</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">    private int ruote;</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">}</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">class Auto extends Veicolo {</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">    public void hello() {</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">        </span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">        ruote = 30;// errore di compilazione, variabile non visibile</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">    }</span><br><span style="font-size: 12.635px;">}&nbsp; </span></div></div></div></pre>
+    </ul>
+</ul>
+<li><b>default: </b>modificatore applicato quando non ne viene specificato uno:</li>
+<ul>
+    <li>un membro di una classe per default è accessibile solo dalle classi appartenenti al package dove è definito;<b></b></li>
+    <li>una classe definita senza il modificatore public è visibile solo dalle classe appartenenti allo stesso package.</li>
+</ul>
+<br>
+<div class="editor-indent" style="margin-left:5px;">
+    <div class="editor-indent" style="margin-left: 10px;"><span><b><img src="https://www.unistudium.unipg.it/unistudium/draftfile.php/159932/user/draft/448051743/tabella_java.png" alt="Tabella con livelli di accesso presa dalla documentazione di Java." width="305" height="165" class="img-responsive atto_image_button_text-bottom"></b></span></div>
+</div>
+</ol>Inoltre possiamo definire modificatori di visibilità anche le seguenti parole chiave:&nbsp;<br>
+<ol>
+    <ul>
+    </ul>
+    <li><b>final: </b>applicabile alle variabili, ai metodi e alle classi:</li>
+    <ul>
+        <li>una variabile <b>final </b>diventa una costante, mentre le variabili e i parametri <b>locali</b> non sono modificabili localmente;</li>
+        <li>un metodo <b>final</b> non può essere riscritto in una sottoclasse (no <b>override</b>);</li>
+        <li>una classe <b>final</b> non può essere estesa.</li>
+    </ul>
+    <ul>
+    </ul>
+    <li><b>abstract: </b>applicabile a un metodo o a una classe, quest'ultima non può essere istanziata.</li>
+    <li><b>static: </b>è possibile applicarlo sia ai membri di una classe che alle variabili:</li>
+    <ul>
+        <li>un membro statico è&nbsp;condiviso da tutte le istanze della classe, quindi esso può essere utilizzato senza istanziare quest'ultima. Un esempio di membro statico è la funzione <b>sqrt </b>di <b>Math</b>&nbsp;richiamabile tramite la sintassi&nbsp;<b>Math.sqrt(numero);</b></li>
+        <li><span>una variabile di una classe dichiarata statica, essendo condivisa da tutte le istanze della
+classe, <b>assumerà lo stesso valore per ogni oggetto di una classe.</b> Quindi se un'istanza modifica la variabile statica di conseguenza essa verrà modificata anche in un'altra istanza relativa alla medesima classe.<br></span></li>
+        <li><span>una variabile&nbsp;dichiarata static e public può essere vista come una variabile globale, se aggiungiamo anche il modificatore final quest'ultima diventa una costante globale.</span></li>
+    </ul>
+</ol>
+</span>
+<p>In conclusione le variabili locali sono visibili solo nelle porzioni di codice in cui sono definite e in quelli annidati, con la differenza che non è possibile ridefinire una variabile in quest'ultimo caso.&nbsp; Mentre i campi e i metodi delle classi
+    sono visibili nella classe stessa e nelle sottoclassi a patto che non abbiano il modificatore private.</p>
+<p><b style="color: rgb(200, 195, 188); font-family: Roboto, sans-serif; font-size: 1.425rem; --darkreader-inline-color:#c1bcb4;" data-darkreader-inline-color=""><span class="" style="color: rgb(51, 51, 51); --darkreader-inline-color:#c8c3bc;" data-darkreader-inline-color="">Esercizi</span></b></p>
+<p>Di seguito vengono proposti alcuni esercizi allo studente in modo da verificare le conoscenze apprese durante questa lezione.</p>
+<p></p>
+<ol>
+    <li>Si chiede di creare una&nbsp; classe <b>Persona</b> la quale è costituita da due variabili di istanza di tipo stringa <b>nome</b> e <b>cognome</b>. Inoltre la classe deve contenere un costruttore parametrico e i metodi <b>get()</b> e <b>set()</b>,
+        si consiglia di prestare particolare attenzione ai <span><b>modificatori di accesso</b></span> applicati agli attributi e ai metodi. Che tipo di modificatori sono stati applicati e perché?</li>
+    <li>&nbsp;Si chiede ora di creare una sottoclasse di <b>Persona</b> chiamata <b>Studente</b>&nbsp; la quale comprende le variabili di istanza di tipo intero <b>matricola</b> e&nbsp; <b>esami, </b>quest'ultimo indica il numero di esami sostenuti dallo
+        studente. La suddetta sottoclasse deve contenere un costruttore parametrico e i metodi <b>set()</b> e <b>get()</b> per le nuove variabili matricola ed esami. Nel caso della classe Persona a cui viene applicato l'incapsulamento, ereditando quest'ultima
+        è possibile per la sottoclasse Studente accedere direttamente ai campi nome e cognome? Motivare la risposta. In caso negativo come è possibile ovviare a questo problema?</li>
+    <li>&nbsp;Questa porzione di codice restituisce qualche errore? Se si, indicare quali e dove spiegandone la tipologia.</li>
+    <ul>
+        <pre><div><div class="editor-indent" style="margin-left: 30px;"><code></code><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">public class Main</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">{</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">  </span><br><div class="editor-indent" style="margin-left: 30px;"></div><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">  public static int modificaVariabile (int a)</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">  {</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">    a = 0;</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">    return a;</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">  }</span></div><div class="editor-indent" style="margin-left: 30px;"><div><div class="editor-indent" style="margin-left: 30px;"></div></div></div></div></pre>
+        <pre><div class="editor-indent" style="margin-left: 30px;"><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">  public static void main (String[]args)</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">  {</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">    final int matricola = 12345;</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">    Studente pippo = new Studente ("Carlo", "Rossi", matricola);</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">    </span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">    matricola = 33456;</span><br><div class="editor-indent" style="margin-left: 30px;"></div><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">    matricola = modificaVariabile(matricola);</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">    System.out.println(a);</span><br><div class="editor-indent" style="margin-left: 30px;"></div><span style="font-size: 12.635px;">  }</span><br><span style=""><span style="font-size: 12.635px;">} </span></span></div></pre>
+    </ul>
+</ol>
+
+<p></p>
+<p></p>
